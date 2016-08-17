@@ -1,19 +1,11 @@
 {
   "name": "angular2-seed",
-  "version": "1.0.0",
-  "description": "A simple starter Angular2 project",
+  "version": "0.0.0",
+  "description": "",
   "scripts": {
-    "typings-install": "typings install",
-    "postinstall": "npm run typings-install",
-    "build": "webpack --inline --colors --progress --display-error-details --display-cached",
-    "watch": "npm run build -- --watch",
-    "server": "webpack-dev-server --inline --colors --progress --display-error-details --display-cached --port 3000  --content-base src",
-    "start": "npm run server"
+    "postinstall": "gulp typings:install"
   },
-  "contributors": [
-    "Rob Wormald <robwormald@gmail.com>",
-    "PatrickJS <github@gdi2290.com>"
-  ],
+  "contributors": [],
   "license": "MIT",
   "devDependencies": {
     "angular2-template-loader": "^0.4.0",
@@ -25,7 +17,14 @@
     "typings": "~1.0.3",
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.14.0",
-    "webpack-merge": "^0.8.4"
+    "browser-sync": "^2.14.0",
+    "browser-sync-webpack-plugin": "^1.1.2",
+    "gulp": "^3.9.1",
+    "gulp-param": "^1.0.3",
+    "open": "0.0.5",
+    "shelljs": "^0.7.0",
+    "typescript": "^1.8.10",
+    "typings": "^1.3.1"
   },
   "dependencies": {
     "@angular/common": "2.0.0-rc.5",
@@ -44,18 +43,12 @@
     "rxjs": "5.0.0-beta.6",
     "zone.js": "~0.6.12"
   },
-  "keywords": [
-    "Angular2",
-    "angular2-seed",
-    "official angular 2 seed",
-    "official angular2 seed"
-  ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/angular/angular2-seed.git"
+    "url": "git+https://github.com/dsilva2401/angular2-seed.git"
   },
   "bugs": {
-    "url": "https://github.com/angular/angular2-seed/issues"
+    "url": "https://github.com/dsilva2401/angular2-seed/issues"
   },
-  "homepage": "https://github.com/angular/angular2-seed#readme"
+  "homepage": "https://github.com/dsilva2401/angular2-seed#readme"
 }

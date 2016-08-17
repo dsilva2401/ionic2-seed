@@ -1,22 +1,27 @@
 var webpack = require('webpack');
 var path = require('path');
+var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
-
-// Webpack Config
-var webpackConfig = {
+module.exports = {
   entry: {
-    'polyfills': './src/polyfills.browser.ts',
-    'vendor':    './src/vendor.browser.ts',
-    'main':       './src/main.browser.ts',
+    'polyfills': './src/setup/polyfills.browser.ts',
+    'vendor':    './src/setup/vendor.browser.ts',
+    'main':       './src/setup/main.browser.ts',
   },
 
   output: {
-    path: './dist',
+    path: './',
+    filename: 'src/dist/[name].bundle.js'
   },
 
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(true),
     new webpack.optimize.CommonsChunkPlugin({ name: ['main', 'vendor', 'polyfills'], minChunks: Infinity }),
+    new BrowserSyncPlugin({
+      host: 'localhost',
+      port: 3000,
+      server: { baseDir: ['src'] }
+    })
   ],
 
   module: {
@@ -26,20 +31,6 @@ var webpackConfig = {
       { test: /\.css$/, loaders: ['to-string-loader', 'css-loader'] },
       { test: /\.html$/, loader: 'raw-loader' }
     ]
-  }
-
-};
-
-
-// Our Webpack Defaults
-var defaultConfig = {
-  devtool: 'cheap-module-source-map',
-  cache: true,
-  debug: true,
-  output: {
-    filename: '[name].bundle.js',
-    sourceMapFilename: '[name].map',
-    chunkFilename: '[id].chunk.js'
   },
 
   resolve: {
@@ -47,20 +38,4 @@ var defaultConfig = {
     extensions: ['', '.ts', '.js']
   },
 
-  devServer: {
-    historyApiFallback: true,
-    watchOptions: { aggregateTimeout: 300, poll: 1000 }
-  },
-
-  node: {
-    global: 1,
-    crypto: 'empty',
-    module: 0,
-    Buffer: 0,
-    clearImmediate: 0,
-    setImmediate: 0
-  }
 };
-
-var webpackMerge = require('webpack-merge');
-module.exports = webpackMerge(defaultConfig, webpackConfig);
