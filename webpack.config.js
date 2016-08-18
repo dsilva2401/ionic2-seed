@@ -4,14 +4,14 @@ var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 module.exports = {
   entry: {
-    'polyfills': './src/setup/polyfills.browser.ts',
-    'vendor':    './src/setup/vendor.browser.ts',
-    'main':       './src/setup/main.browser.ts',
+    'polyfills': './www/setup/polyfills.browser.ts',
+    'vendor':    './www/setup/vendor.browser.ts',
+    'main':       './www/setup/main.browser.ts',
   },
 
   output: {
     path: './',
-    filename: 'src/dist/[name].bundle.js'
+    filename: 'www/dist/[name].bundle.js'
   },
 
   plugins: [
@@ -20,7 +20,7 @@ module.exports = {
     new BrowserSyncPlugin({
       host: 'localhost',
       port: 3000,
-      server: { baseDir: ['src'] }
+      server: { baseDir: ['www'] }
     })
   ],
 
@@ -34,7 +34,7 @@ module.exports = {
   },
 
   resolve: {
-    root: [ path.join(__dirname, 'src') ],
+    root: [ path.join(__dirname, 'www') ],
     extensions: ['', '.ts', '.js']
   },
 

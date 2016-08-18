@@ -2,3 +2,12 @@ node_modules
 dist
 npm-debug.log
 typings
+platforms
+plugins
+node_modules/
+www/build/
+platforms/
+plugins/
+*.swp
+.DS_Store
+Thumbs.db
